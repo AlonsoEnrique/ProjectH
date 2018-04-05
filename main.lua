@@ -5,10 +5,10 @@ function love.load ()
     earth.sayHello ()
 end
 
-function love.update (deltatime)
-    earth:update (deltatime)
+function love.draw ()
+    earth:draw()
 end
 
-function love.draw ()
-    earth.body()
+function love.update (deltatime)
+    earth:update (deltatime)
 end

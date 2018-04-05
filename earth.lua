@@ -33,8 +33,16 @@ function Earth:new ()
     return self
 end
 
+function Earth:load ()
+    local body = self.body ()
+end
+
+function Earth:draw ()
+    self.body()
+end
 
 function Earth:update (deltatime)
     self.move_to_left (deltatime)
-    self.move_to_right (deltatime) 
+    self.move_to_right (deltatime)
 end
+
