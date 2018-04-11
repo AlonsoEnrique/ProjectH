@@ -3,8 +3,6 @@ Waste.__index = Waste
 
 
 function Waste:new (x, y)
-    print(y, x, 'Hellox')
-
     self = setmetatable ({}, Waste)
 
     self.x = x
