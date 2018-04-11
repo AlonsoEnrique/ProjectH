@@ -11,7 +11,7 @@ function Earth:new ()
     self.velocity = 300
 
     function self.sayHello ()
-        print ('Hi, i\'m the Earth, take care!')
+                print ('Hi, i\'m the Earth, take care!')
     end
 
     function self.move_to_left (dt)
@@ -26,6 +26,7 @@ function Earth:new ()
         end
     end
 
+    -- TODO: best way for this?
     function self.body ()
         love.graphics.circle('line', self.x, self.y, self.radius)
     end

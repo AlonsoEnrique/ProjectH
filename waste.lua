@@ -1,7 +1,10 @@
 Waste = {}
 Waste.__index = Waste
 
+
 function Waste:new (x, y)
+    print(y, x, 'Hellox')
+
     self = setmetatable ({}, Waste)
 
     self.x = x
@@ -15,12 +18,19 @@ function Waste:new (x, y)
         print ('Grr, i\'m the Waste, buah buah fiiuak!')
     end
 
-    function self.draw ()
-        love.graphics.polygon ('fill')
+    function self.body ()
+        love.graphics.rectangle ('fill', self.x, self.y, self.w, self.h)
     end
 
     return self
 end
 
+function Waste:draw ()
+    self.body ()
+end
 
-# TODO: Create a waste generator
+function Waste:update (deltatime)
+   self.y = self.y + self.vel * deltatime;
+end
+
+-- TODO: Create a waste generator
