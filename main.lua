@@ -1,40 +1,40 @@
-require 'earth'
-require 'waste'
+require 'turtle'
+require 'diver'
 
 function love.load ()
     math.randomseed (os.time ())
 
-    earth = Earth:new ()
-    earth.sayHello ()
+    turtle = Turtle:new ()
+    turtle.sayHello ()
 
-    wasteList = {}
+    diverList = {}
 
-    timeToGenerateWaste = 20
+    timeToGenerateDiver = 20
 end
 
 function love.draw ()
-    earth:draw()
+    turtle:draw()
 
-    for index, waste in ipairs (wasteList) do
-        waste:draw ()
+    for index, diver in ipairs (diverList) do
+        diver:draw ()
     end
 end
 
 function love.update (deltatime)
-    earth:update (deltatime)
+    turtle:update (deltatime)
 
-    if timeToGenerateWaste == 0 then
+    if timeToGenerateDiver == 0 then
         local xPosition = math.random (1, love.graphics.getWidth ())
         local yPosition = math.random (1, love.graphics.getHeight () / 2)
-        table.insert (wasteList, Waste:new (xPosition, yPosition))
+        table.insert (diverList, Diver:new (xPosition, yPosition))
 
-        timeToGenerateWaste = 20
+        timeToGenerateDiver = 20
 
     else
-        timeToGenerateWaste = timeToGenerateWaste - 1
+        timeToGenerateDiver = timeToGenerateDiver - 1
     end
 
-    for index, waste in ipairs (wasteList) do
-        waste:update (deltatime)
+    for index, diver in ipairs (diverList) do
+        diver:update (deltatime)
     end
 end
