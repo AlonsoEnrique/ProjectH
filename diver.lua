@@ -3,6 +3,17 @@ Diver.__index = Diver
 
 
 function Diver:new (x, y)
+    """ Diver
+    speed: POSITIVE INTEGER
+    direction: CHOICES -> vertical, horizontal
+    Algorithm: swin
+    START
+        IF direction is vertical
+            move to right to left or left to right
+        ELSE IF direction is horizontal
+            move to up to down
+    END
+    """
     self = setmetatable ({}, Diver)
 
     self.x = x
