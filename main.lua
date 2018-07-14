@@ -10,6 +10,9 @@ function love.load ()
     diverList = {}
 
     timeToGenerateDiver = 20
+    background_music = love.audio.newSource('sounds/mainmenu.mp3', 'stream')
+    background_music:setLooping(true)
+    background_music:play(background_music)
 end
 
 function love.draw ()
