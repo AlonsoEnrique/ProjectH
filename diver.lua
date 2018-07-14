@@ -1,9 +1,9 @@
-Waste = {}
-Waste.__index = Waste
+Diver = {}
+Diver.__index = Diver
 
 
-function Waste:new (x, y)
-    self = setmetatable ({}, Waste)
+function Diver:new (x, y)
+    self = setmetatable ({}, Diver)
 
     self.x = x
     self.y = y
@@ -13,7 +13,7 @@ function Waste:new (x, y)
     self.vel = 60
 
     function self.sayHello ()
-        print ('Grr, i\'m the Waste, buah buah fiiuak!')
+        print ('Grr, i\'m the Diver, buah buah fiiuak!')
     end
 
     function self.body ()
@@ -23,12 +23,12 @@ function Waste:new (x, y)
     return self
 end
 
-function Waste:draw ()
+function Diver:draw ()
     self.body ()
 end
 
-function Waste:update (deltatime)
+function Diver:update (deltatime)
    self.y = self.y + self.vel * deltatime;
 end
 
--- TODO: Create a waste generator
+-- TODO: Create a Diver generator

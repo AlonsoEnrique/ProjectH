@@ -1,8 +1,8 @@
-Earth = {}
-Earth.__index = Earth
+Turtle = {}
+Turtle.__index = Turtle
 
-function Earth:new ()
-    self = setmetatable ({}, Earth)
+function Turtle:new ()
+    self = setmetatable ({}, Turtle)
 
     self.radius = 20
     self.x = love.graphics.getWidth () / 2
@@ -11,7 +11,7 @@ function Earth:new ()
     self.velocity = 300
 
     function self.sayHello ()
-                print ('Hi, i\'m the Earth, take care!')
+                print ('Hi, i\'m the Turtle, take care!')
     end
 
     function self.move_to_left (dt)
@@ -46,15 +46,15 @@ function Earth:new ()
     return self
 end
 
-function Earth:load ()
+function Turtle:load ()
     local body = self.body ()
 end
 
-function Earth:draw ()
+function Turtle:draw ()
     self.body()
 end
 
-function Earth:update (deltatime)
+function Turtle:update (deltatime)
     self.move_to_left (deltatime)
     self.move_to_right (deltatime)
     self.move_to_up (deltatime)
