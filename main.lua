@@ -25,9 +25,9 @@ end
 function love.draw ()
     turtle:draw()
 
-    for index, diver in ipairs (diverList) do
+--[[     for index, diver in ipairs (diverList) do
         diver:draw ()
-    end
+    end ]]
 end
 
 function love.update (deltatime)
