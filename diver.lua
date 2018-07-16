@@ -3,7 +3,7 @@ Diver.__index = Diver
 
 
 function Diver:new (x, y)
-    """ Diver
+    --[[ Diver
     speed: POSITIVE INTEGER
     direction: CHOICES -> vertical, horizontal
     Algorithm: swin
@@ -13,7 +13,7 @@ function Diver:new (x, y)
         ELSE IF direction is horizontal
             move to up to down
     END
-    """
+    ]]
     self = setmetatable ({}, Diver)
 
     self.x = x

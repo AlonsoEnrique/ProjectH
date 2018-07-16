@@ -2,11 +2,11 @@ Turtle = {}
 Turtle.__index = Turtle
 
 function Turtle:new ()
-    """ Turtle
+    --[[ Turtle
     speed: POSITIVE INTEGER
     body
     sound_when_swim
-    """
+    ]]
     self = setmetatable ({}, Turtle)
 
     self.radius = 20
@@ -43,7 +43,7 @@ function Turtle:new ()
         end
     end
 
-    """
+    --[[
     Algorithm: swim
     START
         IF player move to LEFT
@@ -55,7 +55,7 @@ function Turtle:new ()
         ELSE
             swim to down
     END
-    """
+    ]]
 
     -- TODO: best way for this?
     function self.body ()
@@ -79,4 +79,3 @@ function Turtle:update (deltatime)
     self.move_to_up (deltatime)
     self.move_to_down (deltatime)
 end
-

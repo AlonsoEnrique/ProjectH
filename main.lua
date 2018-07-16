@@ -2,13 +2,13 @@ require 'turtle'
 require 'diver'
 
 function love.load ()
-    """ Sea
+    --[[ Sea
     turtle_population: POSITIVE INTEGER
     turtle: Turtle OBJECT
     divers: Diver OBJECT LIST
     is_enough_dives_hunting: BOOLEAN
     natural_sounds: STRING
-    """
+    ]]
     math.randomseed (os.time ())
 
     turtle = Turtle:new ()
@@ -31,7 +31,7 @@ function love.draw ()
 end
 
 function love.update (deltatime)
-    """
+    --[[
     Algorithm: update
     Description: This algorithm is a loop when the main actions happen
     START
@@ -40,7 +40,7 @@ function love.update (deltatime)
         enough_hunting_dives()
         turtle.movement()
     END
-    """
+    ]]
     turtle:update (deltatime)
 
     if timeToGenerateDiver == 0 then
@@ -60,7 +60,7 @@ function love.update (deltatime)
 end
 
 
-"""
+--[[
 Algorithm: game_over
 START
     IF turtle is touch for divers
@@ -68,9 +68,9 @@ START
     ELSE
         RETURN False
 END
-"""
+]]
 
-"""
+--[[
 Algorithm: won
 START
     IF turtle reach final
@@ -78,12 +78,12 @@ START
     ELSE
         RETURN False
 END
-"""
+]]
 
-"""
+--[[
 Algorithm: enough_dives_hunting
 START
     IF exists enough dives hunting (enough_dives_hunting) the turtle
         GENERATE dives
 END
-"""
+]]
