@@ -13,36 +13,43 @@ function Turtle:new ()
     self.x = love.graphics.getWidth () / 2
     self.y = love.graphics.getHeight () - self.radius
 
-    self.velocity = 300
+    self.speed = 300
+    self.soundWhenSwim = null
 
     function self.sayHello ()
-                print ('Hi, i\'m the Turtle, take care!')
+        print ('Hi, i\'m the Turtle, take care!')
     end
 
-    function self.move_to_left (dt)
+    function self.move_to_left (deltaTime)
         if love.keyboard.isDown ('left') then
-            self.x = self.x - self.velocity * dt
+            self.x = self.x - self.speed * deltaTime
         end
     end
 
-    function self.move_to_right (dt)
+    function self.move_to_right (deltaTime)
         if love.keyboard.isDown ('right') then
-            self.x = self.x + self.velocity * dt
+            self.x = self.x + self.speed * deltaTime
         end
     end
 
-    function self.move_to_up (dt)
+    function self.move_to_up (deltaTime)
         if love.keyboard.isDown ('up') then
-            self.y = self.y - self.velocity * dt
+            self.y = self.y - self.speed * deltaTime
         end
     end
 
-    function self.move_to_down (dt)
+    function self.move_to_down (deltaTime)
         if love.keyboard.isDown ('down') then
-            self.y = self.y + self.velocity * dt
+            self.y = self.y + self.speed * deltaTime
         end
     end
 
+    function self.swim (deltaTime)
+        self.move_to_left (deltaTime)
+        self.move_to_right (deltaTime)
+        self.move_to_down (deltaTime)
+        self.move_to_up (deltaTime)
+    end
     --[[
     Algorithm: swim
     START
@@ -73,9 +80,6 @@ function Turtle:draw ()
     self.body()
 end
 
-function Turtle:update (deltatime)
-    self.move_to_left (deltatime)
-    self.move_to_right (deltatime)
-    self.move_to_up (deltatime)
-    self.move_to_down (deltatime)
+function Turtle:update (deltaTime)
+    self.swim (deltaTime)
 end
