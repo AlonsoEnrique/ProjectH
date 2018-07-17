@@ -5,7 +5,7 @@ function Turtle:new ()
     self = setmetatable ({}, Turtle)
 
     self.speed = 200
-    self.body = null
+    self.body = 'sprites/turtle.png'
     self.soundWhenSwim = null
 
     self.radius = 30
@@ -13,7 +13,7 @@ function Turtle:new ()
     self.y_position = love.graphics.getHeight () - self.radius
 
     function self.sayHello ()
-        print ('Hi, i\'m the Turtle, take care!')
+        love.graphics.print('Hi, i\'m the Turtle, take care!', 0, 0)
     end
 
     function self.move_to_left (deltaTime)
@@ -47,20 +47,16 @@ function Turtle:new ()
         self.move_to_up (deltaTime)
     end
 
-    -- TODO: best way for this?
-    function self.body ()
-        love.graphics.circle('line', self.x_position, self.y_position, self.radius)
-    end
-
     return self
 end
 
 function Turtle:load ()
-    local body = self.body ()
+
 end
 
 function Turtle:draw ()
-    self.body()
+    love.graphics.circle('line', self.x_position, self.y_position, self.radius)
+    self.sayHello ()
 end
 
 function Turtle:update (deltaTime)
