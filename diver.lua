@@ -2,10 +2,8 @@ Diver = {}
 Diver.__index = Diver
 
 
-function Diver:new (x, y)
+function Diver:new (xPosition, yPosition)
     --[[ Diver
-    speed: POSITIVE INTEGER
-    direction: CHOICES -> vertical, horizontal
     Algorithm: swin
     START
         IF direction is vertical
@@ -16,19 +14,22 @@ function Diver:new (x, y)
     ]]
     self = setmetatable ({}, Diver)
 
-    self.x = x
-    self.y = y
-    self.w = 20
-    self.h = 20
-
-    self.vel = 60
+    self.xPosition = xPosition
+    self.yPosition = yPosition
+    self.width = 30
+    self.height = 30
+    self.speed = 200
+    self.orientation = null --- vertical, horizontal
 
     function self.sayHello ()
         print ('Grr, i\'m the Diver, buah buah fiiuak!')
     end
 
     function self.body ()
-        love.graphics.rectangle ('fill', self.x, self.y, self.w, self.h)
+        love.graphics.rectangle ('fill', self.xPosition, self.yPosition, self.width, self.height)
+    end
+
+    function self.swim ()
     end
 
     return self
@@ -39,7 +40,7 @@ function Diver:draw ()
 end
 
 function Diver:update (deltatime)
-   self.y = self.y + self.vel * deltatime;
+   self.yPosition = self.yPosition + self.speed * deltatime;
 end
 
 -- TODO: Create a Diver generator
