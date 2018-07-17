@@ -18,25 +18,33 @@ function Turtle:new ()
 
     function self.move_to_left (deltaTime)
         if love.keyboard.isDown ('left') then
-            self.x_position = self.x_position - self.speed * deltaTime
+            if self.x_position >= 0 then
+                self.x_position = self.x_position - self.speed * deltaTime
+            end
         end
     end
 
     function self.move_to_right (deltaTime)
         if love.keyboard.isDown ('right') then
-            self.x_position = self.x_position + self.speed * deltaTime
+            if self.x_position <= love.graphics.getWidth () then
+                self.x_position = self.x_position + self.speed * deltaTime
+            end
         end
     end
 
     function self.move_to_up (deltaTime)
         if love.keyboard.isDown ('up') then
-            self.y_position = self.y_position - self.speed * deltaTime
+            if self.y_position >= 0 then
+                self.y_position = self.y_position - self.speed * deltaTime
+            end
         end
     end
 
     function self.move_to_down (deltaTime)
         if love.keyboard.isDown ('down') then
-            self.y_position = self.y_position + self.speed * deltaTime
+            if self.y_position <= love.graphics.getHeight () then
+                self.y_position = self.y_position + self.speed * deltaTime
+            end    
         end
     end
 
