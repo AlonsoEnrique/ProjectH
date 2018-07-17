@@ -23,23 +23,15 @@ function love.draw ()
 end
 
 function love.update (deltaTime)
-    --[[
-    Algorithm: update
-    Description: This algorithm is a loop when the main actions happen
-    START
-        game_over()
-        won()
-        enough_hunting_dives()
-        turtle.movement()
-    END
-    ]]
-    turtle:update (deltaTime)
+    gameOver ()
+    won ()
+    enoughDivesHunting ()
     
-    generateDives ()
-
     for index, diver in ipairs (divers) do
         diver:update (deltaTime)
     end
+
+    turtle:update (deltaTime)
 end
 
 function backgroundMusic ()
@@ -52,7 +44,15 @@ function generateDives ()
     if timeToGenerateDiver == 0 then
         local xPosition = math.random (1, love.graphics.getWidth ())
         local yPosition = math.random (1, love.graphics.getHeight () / 2)
-        table.insert (divers, Diver:new (xPosition, 0))
+
+        randomPosition = math.random (1, 2)
+        if randomPosition == 1 then
+            position = 'vertical'
+        elseif randomPosition == 2 then
+            position = 'horizontal'
+        end
+
+        table.insert (divers, Diver:new (xPosition, yPosition, position))
 
         timeToGenerateDiver = 10
     else
@@ -63,11 +63,15 @@ end
 function enoughDivesHunting ()
     -- IF exists enough dives hunting (enough_dives_hunting) the turtle
     -- GENERATE dives
-    return true
+    if true then
+        generateDives ()
+    end
 end
 
---[[
-Algorithm: game_over
+function gameOver ()
+end
+    --[[
+Algorithm: gameOver
 START
     IF turtle is touch for divers
         RETURN True
@@ -76,6 +80,8 @@ START
 END
 ]]
 
+function won ()
+end
 --[[
 Algorithm: won
 START
