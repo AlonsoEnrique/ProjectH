@@ -1,5 +1,6 @@
 require 'turtle'
 require 'diver'
+local anim8 = require 'libs/anim8'
 
 function love.load ()
     math.randomseed (os.time ())
@@ -12,7 +13,7 @@ function love.load ()
 
     background_music = love.audio.newSource('sounds/mainmenu.mp3', 'stream')
     background_music:setLooping(true)
-    -- background_music:play(background_music)
+    background_music:play(background_music)
 end
 
 function love.draw ()
@@ -23,7 +24,7 @@ function love.draw ()
     end
 end
 
-function love.update (deltatime)
+function love.update (deltaTime)
     --[[
     Algorithm: update
     Description: This algorithm is a loop when the main actions happen
@@ -34,7 +35,7 @@ function love.update (deltatime)
         turtle.movement()
     END
     ]]
-    turtle:update (deltatime)
+    turtle:update (deltaTime)
 
     if timeToGenerateDiver == 0 then
         local xPosition = math.random (1, love.graphics.getWidth ())
@@ -48,7 +49,7 @@ function love.update (deltatime)
     end
 
     for index, diver in ipairs (divers) do
-        diver:update (deltatime)
+        diver:update (deltaTime)
     end
 end
 
