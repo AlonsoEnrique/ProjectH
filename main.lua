@@ -25,7 +25,7 @@ end
 function love.update (deltaTime)
     gameOver ()
     won ()
-    enoughDivesHunting ()
+    addDivers ()
     
     for index, diver in ipairs (divers) do
         diver:update (deltaTime)
@@ -40,32 +40,32 @@ function backgroundMusic ()
     background_music:play(background_music)
 end
 
-function generateDives ()
-    if timeToGenerateDiver == 0 then
-        local xPosition = math.random (1, love.graphics.getWidth ())
-        local yPosition = math.random (1, love.graphics.getHeight () / 2)
+function addDivers ()
+    if enoughDiversHunting () == true then
+        if timeToGenerateDiver == 0 then
+            local xPosition = math.random (1, love.graphics.getWidth ())
+            local yPosition = math.random (1, love.graphics.getHeight () / 2)
 
-        randomPosition = math.random (1, 2)
-        if randomPosition == 1 then
-            position = 'vertical'
-        elseif randomPosition == 2 then
-            position = 'horizontal'
+            randomPosition = math.random (1, 2)
+            if randomPosition == 1 then
+                position = 'vertical'
+            elseif randomPosition == 2 then
+                position = 'horizontal'
+            end
+
+            table.insert (divers, Diver:new (xPosition, yPosition, position))
+
+            timeToGenerateDiver = 10
+        else
+            timeToGenerateDiver = timeToGenerateDiver - 1
         end
-
-        table.insert (divers, Diver:new (xPosition, yPosition, position))
-
-        timeToGenerateDiver = 10
-    else
-        timeToGenerateDiver = timeToGenerateDiver - 1
     end
 end
 
-function enoughDivesHunting ()
+function enoughDiversHunting ()
     -- IF exists enough dives hunting (enough_dives_hunting) the turtle
     -- GENERATE dives
-    if true then
-        generateDives ()
-    end
+    return true
 end
 
 function gameOver ()
@@ -92,11 +92,3 @@ START
 END
 ]]
 
---[[
-Algorithm: generateDives
-
-START
-
-END
-
-]]
