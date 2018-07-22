@@ -43,14 +43,16 @@ end
 function addDivers ()
     if enoughDiversHunting () == true then
         if timeToGenerateDiver == 0 then
-            local xPosition = math.random (1, love.graphics.getWidth ())
-            local yPosition = math.random (1, love.graphics.getHeight () / 2)
-
             randomPosition = math.random (1, 2)
+
             if randomPosition == 1 then
                 position = 'vertical'
+                xPosition = math.random (1, love.graphics.getWidth ())
+                yPosition = 1
             elseif randomPosition == 2 then
                 position = 'horizontal'
+                xPosition = 0
+                yPosition = math.random (1, love.graphics.getHeight ())
             end
 
             table.insert (divers, Diver:new (xPosition, yPosition, position))
