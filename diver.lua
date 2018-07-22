@@ -3,15 +3,6 @@ Diver.__index = Diver
 
 
 function Diver:new (xPosition, yPosition, orientation)
-    --[[ Diver
-    Algorithm: swin
-    START
-        IF direction is vertical
-            move to right to left or left to right
-        ELSE IF direction is horizontal
-            move to up to down
-    END
-    ]]
     self = setmetatable ({}, Diver)
 
     self.xPosition = xPosition
@@ -29,7 +20,23 @@ function Diver:new (xPosition, yPosition, orientation)
         love.graphics.rectangle ('fill', self.xPosition, self.yPosition, self.width, self.height)
     end
 
-    function self.swim ()
+    function self.swim (deltaTime)
+        --[[ Diver
+        Algorithm: swin
+        START
+            IF direction is vertical
+                move to right to left or left to right
+            ELSE IF direction is horizontal
+                move to up to down
+        END
+        ]]
+        fixSpeed = self.speed * deltaTime
+
+        if self.orientation == 'vertical' then
+            self.yPosition = self.yPosition + fixSpeed
+        elseif self.orientation == 'horizontal' then
+            self.xPosition = self.xPosition + fixSpeed
+        end
     end
 
     return self
@@ -39,10 +46,6 @@ function Diver:draw ()
     self.body ()
 end
 
-function Diver:update (deltatime)
-    if self.orientation == 'vertical' then
-        self.yPosition = self.yPosition + self.speed * deltatime
-    elseif self.orientation == 'horizontal' then
-        self.xPosition = self.xPosition + self.speed * deltatime
-    end
+function Diver:update (deltaTime)
+    self.swim (deltaTime)
 end
