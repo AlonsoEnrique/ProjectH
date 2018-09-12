@@ -1,6 +1,5 @@
 require 'turtle'
 require 'diver'
-require 'libs/collision'
 local anim8 = require 'libs/anim8'
 
 function love.load ()
@@ -24,14 +23,12 @@ function love.draw ()
 end
 
 function love.update (deltaTime)
+    gameOver ()
     won ()
     addDivers ()
     
     for index, diver in ipairs (divers) do
         diver:update (deltaTime)
-        gameOver (
-            turtle.xPosition, turtle.yPosition, 30, 30, diver.xPosition, diver.yPosition, diver.width, diver.height
-        )
     end
 
     turtle:update (deltaTime)
@@ -73,10 +70,7 @@ function enoughDiversHunting ()
     return true
 end
 
-function gameOver (aX, aY, aWidth, aHeight, bX, bY, bWidth, bHeight)
-    if checkCollision (aX, aY, aWidth, aHeight, bX, bY, bWidth, bHeight) then
-        print ('Tonjeo')
-    end
+function gameOver ()
 end
     --[[
 Algorithm: gameOver
